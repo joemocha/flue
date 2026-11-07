@@ -897,7 +897,7 @@ function streamCloudflareResponsesAi(
 			// `additional_tools` items only when the model advertises the channel;
 			// request-level tools mirror the same split via the request-tools
 			// projection so added definitions never leak into the cached prefix.
-			const { requestTools } = resolveTranscriptTools(context.messages, supportsToolAdditions);
+			const { requestTools } = resolveTranscriptTools(context.messages, supportsToolAdditions ? "additions" : "none");
 			if (requestTools.length > 0) {
 				payload.tools = convertResponsesTools(requestTools);
 			}
